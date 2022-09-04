@@ -1,4 +1,5 @@
 use chrono::Datelike;
+use rocket::serde::json::Json;
 
 use crate::routes::date::Date;
 
@@ -11,4 +12,20 @@ pub fn get_current_date() -> Date {
     let current_day = Date { day, month, year };
 
     current_day
+}
+
+pub fn date_plus_month(date: Json<Date>) -> Date {
+    let mut new_month = date.month + 1;
+
+    if new_month > 12 {
+        new_month = 1;
+    }
+
+    let new_date = Date {
+        day: date.day,
+        month: new_month,
+        year: date.year,
+    };
+
+    new_date
 }

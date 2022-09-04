@@ -1,0 +1,16 @@
+GET http://127.0.0.1:8000/api
+
+###
+
+GET http://127.0.0.1:8000/api/date/get-current-date
+
+###
+
+POST http://127.0.0.1:8000/api/date/date-plus-month 
+content-type: application/json
+
+{
+    "day": 15,
+    "month": 5,
+    "year": 2020
+}

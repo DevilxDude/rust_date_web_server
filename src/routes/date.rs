@@ -16,3 +16,8 @@ pub struct Date {
 pub fn get_current_date() -> Json<Date> {
     Json(services::date::get_current_date())
 }
+
+#[post("/date/date-plus-month", format = "json", data = "<date>")]
+pub fn date_plus_month(date: Json<Date>) -> Json<Date> {
+    Json(services::date::date_plus_month(date))
+}
